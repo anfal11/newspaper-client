@@ -3,11 +3,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import useAuth from "../Hooks/useAuth";
 import { useState } from "react";
+import axios from "axios";
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
-  
-  const { signIn, signInWithGoogle } = useAuth();
+  const { signInWIthMail, signInWithGoogle } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -22,7 +22,7 @@ const Login = () => {
     const email = form.get("email");
     const password = form.get("password");
 
-    signIn(email, password)
+    signInWIthMail(email, password)
       .then(() => {
         toast.success("User successfully logged in ");
         navigate(location?.state ? location?.state : "/");
@@ -34,10 +34,21 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     signInWithGoogle()
+    .then(res => {
+      const user = res.user;
+      const name = user?.displayName;
+      const email = user?.email;
+      const image = user?.photoURL;
+      const userInfo = {name, email, image};
+      axios.post('http://localhost:5000/users', userInfo)
       .then(() => {
         toast.success("User successfully logged in");
         navigate(location?.state ? location.state : "/");
       })
+      .catch((error) => {
+        toast.error(error.message);
+      });
+    })
       .catch((error) => {
         toast.error(error.message);
       });
