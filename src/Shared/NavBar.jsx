@@ -1,6 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import  useAuth  from "../Hooks/useAuth";
 
 const NavBar = () => {
+    const {user} = useAuth();
   const nav = (
     <>
       <NavLink
@@ -40,6 +42,7 @@ const NavBar = () => {
       >
         My Articles
       </NavLink>
+      {/* todo: (If user taken Subscription) */}
       <NavLink
         to="/premium-article"
         className={({ isActive }) => (isActive ? "p-3 rounded bg-blue-400 text-white" : "bg-white p-3")}
@@ -88,7 +91,8 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Button</a>
+        <img src="" alt="" />
+          <Link to='/login' className="pr-10">Login</Link>
         </div>
       </div>
     </div>
