@@ -1,8 +1,32 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import  useAuth  from "../Hooks/useAuth";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+
 
 const NavBar = () => {
-    const {user} = useAuth();
+    const {user, logOut} = useAuth();
+    const [userProfile, setUserProfile] = useState(null);
+    const navigate = useNavigate();
+
+    useEffect(()=> {
+        setUserProfile({
+            displayName: user?.displayName,
+            photoURL: user?.photoURL,
+        })
+    }, [user])
+
+    const signOut = () => {
+        logOut()
+        .then(() => {
+          toast.success('user signed out');
+          navigate('/');
+        })
+        .catch((error) => {
+          toast.error(error.message);
+        });
+      }
+
   const nav = (
     <>
       <NavLink
@@ -91,13 +115,32 @@ const NavBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-        <img src="" alt="" />
-        <NavLink
+        {
+            user?.email ? (
+                <img className="rounded-full mr-3" src={userProfile?.photoURL} alt="" />
+            ) : (
+                <></>
+            )
+        }
+        {
+          user?.email ? (
+            <Link
+            onClick={signOut}
+        className="bg-white p-3"
+      >
+        Logout
+      </Link>
+          ) : 
+          (
+            <NavLink
         to="/login"
         className={({ isActive }) => (isActive ? "p-3 rounded bg-blue-400 text-white" : "bg-white p-3")}
       >
         Login
       </NavLink>
+            
+          )
+        }
         </div>
       </div>
     </div>
