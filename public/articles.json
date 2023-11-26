@@ -1,0 +1,171 @@
+[
+    {
+      "title": "World Leaders Summit",
+      "image": "https://i.ibb.co/vZfSqYN/maxresdefault.jpg",
+      "publisher": "Global Gazette",
+      "tags": ["world news", "summit", "diplomacy"],
+      "description": "Coverage of the annual World Leaders Summit where global leaders come together to discuss pressing issues and forge diplomatic ties."
+    },
+    {
+      "title": "Art and Culture Festival",
+      "image": "https://i.ibb.co/nf3Hbf2/maxresdefault.jpg",
+      "publisher": "Cultural Chronicle",
+      "tags": ["art", "culture", "festival"],
+      "description": "Immerse yourself in the vibrant world of art and culture at this year's festival. Discover new talents and explore diverse artistic expressions."
+    },
+    {
+      "title": "Health & Wellness Expo",
+      "image": "https://i.ibb.co/8Ktjzgf/OIP.jpg",
+      "publisher": "Health Herald",
+      "tags": ["health", "wellness", "expo"],
+      "description": "Join us at the Health & Wellness Expo for the latest in medical advancements, fitness trends, and expert advice on leading a healthy lifestyle."
+    },
+    {
+      "title": "Business Outlook 2023",
+      "image": "https://i.ibb.co/Xkn3YCJ/R.png",
+      "publisher": "Business Beacon",
+      "tags": ["business", "economy", "outlook"],
+      "description": "Get insights into the economic landscape with Business Outlook 2023. Analysis of market trends, investment opportunities, and more."
+    },
+    {
+      "title": "Science Breakthroughs",
+      "image": "https://i.ibb.co/VqG4RXK/R.jpg",
+      "publisher": "Science Sentinel",
+      "tags": ["science", "research", "breakthroughs"],
+      "description": "Explore the latest scientific breakthroughs that are shaping the future. From space exploration to medical advancements, we've got it covered."
+    },
+    {
+      "title": "Urban Living: City Pulse",
+      "image": "https://i.ibb.co/9Z6cQ5C/OIP.jpg",
+      "publisher": "City Pulse",
+      "tags": ["urban living", "city", "lifestyle"],
+      "description": "Discover the heartbeat of the city with City Pulse. From local events to lifestyle features, stay connected with urban living."
+    },
+    {
+      "title": "Environmental Focus",
+      "image": "https://i.ibb.co/t3JL730/OIP.jpg",
+      "publisher": "Eco Echo",
+      "tags": ["environment", "sustainability", "green living"],
+      "description": "A dedicated focus on environmental issues, sustainability practices, and stories that inspire positive change for our planet."
+    },
+    {
+      "title": "Innovation Inquirer",
+      "image": "https://i.ibb.co/W2KGz44/R.jpg",
+      "publisher": "Innovation Inquirer",
+      "tags": ["innovation", "technology", "research"],
+      "description": "Stay ahead with the latest innovations and technological advancements. Innovation Inquirer keeps you informed on the cutting edge of progress."
+    },
+    {
+      "title": "Community Chronicles",
+      "image": "https://i.ibb.co/5sDSdL0/OIP.jpg",
+      "publisher": "Community Courier",
+      "tags": ["community", "local news", "events"],
+      "description": "Explore the stories that matter most in your community. Community Chronicles brings you local news, events, and profiles of community members."
+    },
+    {
+      "title": "Frontier Focus",
+      "image": "https://i.ibb.co/s6L8Qj0/OIP.jpg",
+      "publisher": "Frontier Focus",
+      "tags": ["frontier", "exploration", "adventure"],
+      "description": "Embark on a journey with Frontier Focus, exploring frontiers of knowledge, adventure, and discovery. Uncover the extraordinary stories from the edge of possibility."
+    },
+    {
+      "title": "The Diplomatic Dispatch",
+      "image": "https://i.ibb.co/c6HxTD7/OIP.jpg",
+      "publisher": "The Diplomatic Dispatch",
+      "tags": ["diplomacy", "international relations", "foreign affairs"],
+      "description": "Navigate the complex world of international relations with The Diplomatic Dispatch. In-depth analysis, interviews, and coverage of global diplomatic events."
+    },
+    {
+      "title": "Express Endeavor",
+      "image": "https://i.ibb.co/ph6kP4S/OIP.jpg",
+      "publisher": "Express Endeavor",
+      "tags": ["express news", "rapid updates", "current affairs"],
+      "description": "Get express updates on current affairs and breaking news. Express Endeavor delivers the latest happenings with speed and accuracy."
+    },
+    {
+      "title": "The Insight Times",
+      "image": "https://i.ibb.co/p1RVGVp/R.jpg",
+      "publisher": "The Insight Times",
+      "tags": ["insights", "analysis", "opinion"],
+      "description": "Delve into insightful analysis and opinion pieces with The Insight Times. Gain a deeper understanding of the stories shaping our world."
+    },
+    {
+      "title": "The Daily Nexus",
+      "image": "https://i.ibb.co/R4sWRRn/OIP.jpg",
+      "publisher": "The Daily Nexus",
+      "tags": ["daily news", "updates", "current events"],
+      "description": "Your go-to source for daily news, updates, and coverage of current events. Stay informed with The Daily Nexus."
+    },
+    {
+      "title": "Metro Mirror",
+      "image": "https://i.ibb.co/Tkd02TW/OIP.jpg",
+      "publisher": "Metro Mirror",
+      "tags": ["metro news", "city updates", "local happenings"],
+      "description": "Reflecting the pulse of the city, Metro Mirror brings you the latest metro news, city updates, and local happenings."
+    },
+    {
+      "title": "Business Buzz",
+      "image": "https://i.ibb.co/8mvVt2Q/R.jpg",
+      "publisher": "Business Buzz",
+      "tags": ["business", "entrepreneurship", "startup"],
+      "description": "Catch the buzz in the business world with Business Buzz. From startups to market trends, stay informed about the business landscape."
+    },
+    {
+      "title": "Express Editorial",
+      "image": "https://i.ibb.co/NTXvNGk/OIP.jpg",
+      "publisher": "Express Editorial",
+      "tags": ["editorial", "opinion", "commentary"],
+      "description": "Read thought-provoking editorials, opinions, and commentary with Express Editorial. Engage with the issues that matter."
+    },
+    {
+      "title": "Sports Spotlight",
+      "image": "https://i.ibb.co/LtP879W/R.jpg",
+      "publisher": "Sports Spotlight",
+      "tags": ["sports", "athletics", "highlights"],
+      "description": "Shine a spotlight on sports excellence with Sports Spotlight. Get the latest highlights, athlete profiles, and in-depth sports coverage."
+    },
+    {
+      "title": "Fashion Forward",
+      "image": "https://i.ibb.co/MBqJQbP/OIP.jpg",
+      "publisher": "Fashion Forward",
+      "tags": ["fashion", "style", "trends"],
+      "description": "Step into the world of Fashion Forward, where style meets substance. Explore the latest trends, designer profiles, and fashion-forward insights."
+    },
+    {
+      "title": "Mindful Living",
+      "image": "https://i.ibb.co/gv4k4qP/R.png",
+      "publisher": "Mindful Living",
+      "tags": ["mindfulness", "well-being", "lifestyle"],
+      "description": "Embrace a lifestyle of mindfulness and well-being with Mindful Living. Discover tips for a balanced and fulfilling life."
+    },
+    {
+      "title": "The Progressive Press",
+      "image": "https://i.ibb.co/JFy9ggR/Reloading-Presses-1.jpg",
+      "publisher": "The Progressive Press",
+      "tags": ["progressive", "social justice", "activism"],
+      "description": "Stay informed about progressive movements, social justice issues, and activism with The Progressive Press. Amplifying voices for positive change."
+    },
+    {
+      "title": "Urban Update",
+      "image": "https://i.ibb.co/3Rvxg6Q/4.jpg",
+      "publisher": "Urban Update",
+      "tags": ["urban", "city life", "development"],
+      "description": "Get the latest updates on urban development, city life, and infrastructure with Urban Update. Navigating the ever-evolving landscape of urban living."
+    },
+    {
+      "title": "Community Compass",
+      "image": "https://i.ibb.co/P5n3Y79/communitycompass-3col-full-logo-3-1024x371.png",
+      "publisher": "Community Compass",
+      "tags": ["community", "local insights", "neighborhood"],
+      "description": "Find your way with Community Compass, your guide to local insights, neighborhood happenings, and community stories."
+    },
+    {
+      "title": "Artisanal Adventures",
+      "image": "https://i.ibb.co/zmtDrxB/images-q-tbn-ANd9-Gc-RPj-GMCb-Sqzdoh-De-RFd-Tl-XL7-QDFa-NMu-WNekb-Bxf74-Sj94f-CND3-K2p-Aqs-ZEwmtfb-U.jpg",
+      "publisher": "Artisanal Adventures",
+      "tags": ["artisanal", "craftsmanship", "adventures"],
+      "description": "Embark on artisanal adventures exploring craftsmanship, unique creations, and cultural expressions. Join the journey with Artisanal Adventures."
+    }
+  ]
+  

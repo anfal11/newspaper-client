@@ -92,7 +92,12 @@ const NavBar = () => {
         </div>
         <div className="navbar-end">
         <img src="" alt="" />
-          <Link to='/login' className="pr-10">Login</Link>
+        <NavLink
+        to="/login"
+        className={({ isActive }) => (isActive ? "p-3 rounded bg-blue-400 text-white" : "bg-white p-3")}
+      >
+        Login
+      </NavLink>
         </div>
       </div>
     </div>
