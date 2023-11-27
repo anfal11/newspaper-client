@@ -42,7 +42,6 @@ const ArticleCard = ({ article }) => {
 
   return (
     <div className="max-w-7xl mx-auto">
-      <div></div>
       <div>
         <Card sx={{ maxWidth: 345, height: 550, boxShadow:10 }}>
           <CardMedia
