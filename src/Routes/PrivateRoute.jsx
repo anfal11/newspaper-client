@@ -1,5 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import { Puff } from "react-loader-spinner";
 
 
 const PrivateRoute = ({children}) => {
@@ -7,9 +8,20 @@ const PrivateRoute = ({children}) => {
     const {user, loading} = useAuth();
     if(loading){
         return (
-            <div>
-                <h1>Loading...</h1>
-            </div>
+            
+                <div className="flex justify-center items-center mt-10">
+                <Puff
+  height="80"
+  width="80"
+  radius={1}
+  color="#4fa94d"
+  ariaLabel="puff-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+/>
+                </div>
+           
         )
     }
 

@@ -65,14 +65,16 @@ const ArticleCard = ({ article }) => {
           </CardActions>
           <CardActions>
             <Button size="small">
-              {tags.map((tag) => (
-                <span className="bg-gray-200 rounded-full px-1 py-2 text-xs font-semibold text-gray-700 mr-2">
+              {tags.map((tag, index) => (
+                <span key={index} className="bg-gray-200 rounded-full px-1 py-2 text-xs font-semibold text-gray-700 mr-2">
                   {tag}
                 </span>
               ))}
             </Button>
           </CardActions>
-            <Link className="flex justify-center shadow-md hover:bg-blue-500 w-20 mx-auto mt-3">
+            <Link
+             to={`/article/${_id}`}
+             className="flex justify-center shadow-md hover:bg-blue-500 w-20 mx-auto mt-3">
             <Button className="hover:text-white rounded-md" size="small">Details</Button>
             </Link>
         </Card>

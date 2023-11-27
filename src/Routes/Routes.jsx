@@ -10,6 +10,7 @@ import PremiumArticles from "../Pages/PremiumArticles/PremiumArticles";
 import UserProfile from "../Pages/UserProfile/UserProfile";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import SingleDetailsPage from "../Component/SingleDetailsPage/SingleDetailsPage";
 
 
 export const router = createBrowserRouter([
@@ -56,6 +57,11 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/",
+        element: <SingleDetailsPage />,
+        
       }
     ],
   },

@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import ArticleCard from "../../Component/ArticleCard/ArticleCard";
 import useAuth from "../../Hooks/useAuth";
+import { Puff } from "react-loader-spinner";
 
 const AllArticles = () => {
     const { loading: authLoading} = useAuth();
@@ -23,7 +24,19 @@ const AllArticles = () => {
             <h1 className="my-10"> Search here</h1>
             <h1 className="my-10"> Filter By</h1>
             {
-                loading ? <h1>Loading...</h1> 
+                loading ? 
+                <div className="flex justify-center items-center mt-10">
+                <Puff
+  height="80"
+  width="80"
+  radius={1}
+  color="#4fa94d"
+  ariaLabel="puff-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  visible={true}
+/>
+                </div>
                 : 
                 <>
 
