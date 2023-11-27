@@ -11,6 +11,7 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { HiEye } from "react-icons/hi";
 
 const ArticleCard = ({ article }) => {
   const { user } = useAuth();
@@ -21,6 +22,7 @@ const ArticleCard = ({ article }) => {
     image,
     publisher,
     tags,
+    viewCount,
     "short-description": shortDescription,
     "long-description": longDescription,
   } = article;
@@ -43,7 +45,7 @@ const ArticleCard = ({ article }) => {
   return (
     <div className="max-w-7xl mx-auto">
       <div>
-        <Card sx={{ maxWidth: 345, height: 550, boxShadow:10 }}>
+        <Card sx={{ maxWidth: 345, height: 570, boxShadow:10 }}>
           <CardMedia
             component="img"
             alt="green iguana"
@@ -71,9 +73,10 @@ const ArticleCard = ({ article }) => {
               ))}
             </Button>
           </CardActions>
+            <p className="px-4 font-medium flex items-center gap-2"  size="small">Views: {viewCount}<HiEye /></p>
             <Link
              to={`/article/${_id}`}
-             className="flex justify-center shadow-md hover:bg-blue-500 w-20 mx-auto mt-3">
+             className="flex justify-center shadow-md hover:bg-blue-500 w-20 mx-auto mt-1">
             <Button className="hover:text-white rounded-md" size="small">Details</Button>
             </Link>
         </Card>
