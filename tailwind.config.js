@@ -7,8 +7,9 @@ export default {
   theme: {
     screens: {
       
-      custom: "1024px",
-      lg: "1215px",
+      md: '768px',
+      lg: '1215px'
+     
     },
     
     extend: {},

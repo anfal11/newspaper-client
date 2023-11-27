@@ -44,7 +44,7 @@ const ArticleCard = ({ article }) => {
     <div className="max-w-7xl mx-auto">
       <div></div>
       <div>
-        <Card sx={{ maxWidth: 345, height: 550}}>
+        <Card sx={{ maxWidth: 345, height: 550, boxShadow:10 }}>
           <CardMedia
             component="img"
             alt="green iguana"
@@ -66,14 +66,14 @@ const ArticleCard = ({ article }) => {
           <CardActions>
             <Button size="small">
               {tags.map((tag) => (
-                <span className="bg-gray-200 rounded-full px-1 py-2 text-sm font-semibold text-gray-700 mr-2">
+                <span className="bg-gray-200 rounded-full px-1 py-2 text-xs font-semibold text-gray-700 mr-2">
                   {tag}
                 </span>
               ))}
             </Button>
           </CardActions>
-            <Link>
-            <Button size="small">Details</Button>
+            <Link className="flex justify-center shadow-md hover:bg-blue-500 w-20 mx-auto mt-3">
+            <Button className="hover:text-white rounded-md" size="small">Details</Button>
             </Link>
         </Card>
       </div>
