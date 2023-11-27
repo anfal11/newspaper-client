@@ -4,6 +4,7 @@ import ArticleCard from "../../Component/ArticleCard/ArticleCard";
 import useAuth from "../../Hooks/useAuth";
 import { Puff } from "react-loader-spinner";
 
+
 const AllArticles = () => {
     const { loading: authLoading} = useAuth();
     const { refetch, data: articles = [], isLoading: usersLoading} = useQuery({
