@@ -59,9 +59,8 @@ export const router = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/",
+        path: "/article/:id",
         element: <SingleDetailsPage />,
-        
       }
     ],
   },
