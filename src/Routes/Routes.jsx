@@ -50,7 +50,6 @@ export const router = createBrowserRouter([
       {
         path: "/userProfile",
         element: <UserProfile />,
-        // loader: ({params}) => fetch(`http://localhost:5000/users/${params.id}`)
       },
       {
         path: "/login",
