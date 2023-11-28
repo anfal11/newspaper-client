@@ -11,6 +11,7 @@ import UserProfile from "../Pages/UserProfile/UserProfile";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import SingleDetailsPage from "../Component/SingleDetailsPage/SingleDetailsPage";
+import UpdateProfile from "../Component/Update/UpdateProfile";
 
 
 export const router = createBrowserRouter([
@@ -61,7 +62,11 @@ export const router = createBrowserRouter([
       {
         path: "/article/:id",
         element: <SingleDetailsPage />,
-      }
+      },
+      {
+        path: "/update-profile/:id",
+        element: <UpdateProfile />,
+      }      
     ],
   },
 ]);
