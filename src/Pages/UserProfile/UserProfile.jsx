@@ -1,28 +1,27 @@
 import { Button, Typography } from "@mui/material";
 import useAuth from "../../Hooks/useAuth";
-import { Puff } from "react-loader-spinner";
+// import { Puff } from "react-loader-spinner";
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import { Link} from "react-router-dom";
-// import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+
 
 
 const UserProfile = () => {
-    // const [u, setU] = useState(null);
-  const { user, loading } = useAuth();
-  console.log(user);
-  // useEffect(() => {
- 
-  //     fetch(`http://localhost:5000/users/6563bdf4bdab3a858375068e`)
-  //       .then(res => res.json())
-  //       .then(data => {
-  //         setU(data);
-  //         console.log(data);
-  //       })
+  const [u, setU] = useState(null);
+  const { user } = useAuth();
 
-  // }, [u._id]);
-  
-  
- 
+  useEffect(() => {
+    fetch(`http://localhost:5000/users`)
+      .then((res) => res.json())
+      .then((data) => {
+        setU(data);
+      });
+  }, []);
+
+  // Check if u is an array before using filter
+  const userData = Array.isArray(u) ? u.find((users) => users?.email === user?.email) : [];
+  console.log(userData);
 
   return (
     <div className="pt-36 max-w-7xl mx-auto">
@@ -30,36 +29,24 @@ const UserProfile = () => {
         User Profile
       </Typography>
       <div>
-        {loading ? (
-          <div className="flex justify-center items-center mt-10">
-            <Puff
-              height="80"
-              width="80"
-              radius={1}
-              color="#4fa94d"
-              ariaLabel="puff-loading"
-              wrapperStyle={{}}
-              wrapperClass=""
-              visible={true}
-            />
-          </div>
-        ) :
-      
+        {userData && (
           <div className="flex flex-col items-center py-2">
-            <img className="w-[10%] h-[10%] rounded-full" src={user?.photoURL} alt="" />
-            <p className="text-xl font-bold">Name:  {user?.displayName}</p>
-            <p className="text-xl font-bold">Email: {user?.email}</p>
-          </div>
-     
-    }
+  <img
+    src={userData?.image}
+    alt=""
+    className="rounded-full h-40 w-40 object-cover"
+  />
+  <p className="text-xl font-bold">Name: {userData?.name}</p>
+  <p className="text-xl font-bold">Email: {userData?.email}</p>
+  <p className="text-xl font-bold">ID: {userData?._id}</p>
+</div>
+
+        )}
       </div>
-      <Link
-      className="flex justify-center"
-      to={`/update-profile/${user?.uid}`}
-      >
-      <Button variant="outlined" startIcon={<ModeEditIcon />}>
-  Update Profile
-</Button>
+      <Link className="flex justify-center" to={`/update-profile/${userData?._id}`}>
+        <Button variant="outlined" startIcon={<ModeEditIcon />}>
+          Update Profile
+        </Button>
       </Link>
     </div>
   );
