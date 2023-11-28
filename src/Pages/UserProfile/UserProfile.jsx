@@ -24,7 +24,7 @@ const UserProfile = () => {
   console.log(userData);
 
   return (
-    <div className="pt-36 max-w-7xl mx-auto">
+    <div className="pt-36 max-w-7xl mx-auto h-screen">
       <Typography variant="h3" className="text-center underline" gutterBottom>
         User Profile
       </Typography>

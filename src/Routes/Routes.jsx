@@ -12,12 +12,14 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import SingleDetailsPage from "../Component/SingleDetailsPage/SingleDetailsPage";
 import UpdateProfile from "../Component/Update/UpdateProfile";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
