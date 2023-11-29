@@ -14,32 +14,6 @@ const AllArticles = () => {
   const [article, setArticle] = useState([]);
   const {loading} = useAuth();
 
-  // const { data: searchedArticles,} = useQuery({
-  //   queryKey: ["searchedArticles", searchQuery],
-  //   queryFn: async () => {
-  //     const res = await axios.get(`http://localhost:5000/articles/search/${searchQuery}`);
-  //     return res.data;
-  //   },
-  //   enabled: !!searchQuery,
-  // });
-
-  // useEffect(()=> {
-  //   fetch(`http://localhost:5000/articles?sort=${asc ? 'asc' : 'desc'}`)
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     setFilter(data)
-  //   })
-  // },[asc])
-
-  // const { loading: authLoading } = useAuth();
-  // const { data: articles = [], isLoading: usersLoading } = useQuery({
-  //   queryKey: ["articles"],
-  //   queryFn: async () => {
-  //     const res = await axios.get(`http://localhost:5000/articles`);
-  //     return res.data;
-  //   },
-  // });
-
   useEffect(() => {
     axios
       .get(

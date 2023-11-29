@@ -44,7 +44,7 @@ const Home = () => {
               Subscribe
             </button>
           </div>
-        )}
+          )}
       </div>
       <Banner></Banner>
     </div>

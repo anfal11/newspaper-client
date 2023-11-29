@@ -1,3 +1,5 @@
+import { FaFacebook, FaGoogle, FaInstagram, FaTwitter } from "react-icons/fa";
+
 const Footer = () => {
   // Current year for the copyright notice
   const currentYear = new Date().getFullYear();
@@ -24,8 +26,10 @@ const Footer = () => {
       </nav>
       <nav>
         <div className="grid grid-flow-col gap-4">
-          {/* Social media icons (unchanged) */}
-          {/* ... */}
+        <FaFacebook className="text-2xl" />
+        <FaGoogle className="text-2xl" />
+        <FaTwitter className="text-2xl" />
+        <FaInstagram className="text-2xl" />
         </div>
       </nav>
       <aside>
