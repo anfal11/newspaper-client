@@ -71,7 +71,7 @@ const NavBar = () => {
                 Home
               </NavLink>
               <NavLink
-                to="/add-article"
+                to="/addArticle"
                 className={({ isActive }) =>
                   isActive ? "p-3 rounded bg-blue-400 text-white" : "bg-white p-3"
                 }
@@ -142,7 +142,7 @@ const NavBar = () => {
               Home
             </NavLink>
             <NavLink
-              to="/add-article"
+              to="/addArticle"
               className={({ isActive }) =>
                 isActive ? "p-3 rounded bg-blue-400 text-white" : "bg-white p-3"
               }

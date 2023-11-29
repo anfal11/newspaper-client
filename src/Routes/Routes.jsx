@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "./Root";
 import Home from "../Pages/Home/Home";
-import AddArticles from "../Pages/Articles/AddArticles";
+
 import AllArticles from "../Pages/Articles/AllArticles";
 import Subscription from "../Pages/Subscription/Subscription";
 import Dashboard from "../Pages/Dashboard/Dashboard";
@@ -14,6 +14,7 @@ import SingleDetailsPage from "../Component/SingleDetailsPage/SingleDetailsPage"
 import UpdateProfile from "../Component/Update/UpdateProfile";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
+import AddArticlePage from "../Pages/Articles/AddArticlePage";
 
 
 export const router = createBrowserRouter([
@@ -27,8 +28,8 @@ export const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/add-article",
-        element: <AddArticles />,
+        path: "/addArticle",
+        element: <AddArticlePage />,
       },
       {
         path: "/all-articles",
