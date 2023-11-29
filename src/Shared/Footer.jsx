@@ -1,4 +1,3 @@
-
 const Footer = () => {
   // Current year for the copyright notice
   const currentYear = new Date().getFullYear();
@@ -16,7 +15,7 @@ const Footer = () => {
         <a href="/editorial-policy" className="link link-hover">
           Editorial Policy
         </a>
-        <a href="/subscriptions" className="link link-hover">
+        <a href="/subscription" className="link link-hover">
           Subscriptions
         </a>
         <a href="/archives" className="link link-hover">
