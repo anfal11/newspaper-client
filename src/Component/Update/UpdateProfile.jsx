@@ -103,7 +103,7 @@ const UpdateProfile = () => {
                       </label>
                       {profile && (
                         <img
-                          src={profile.image}
+                          src={profile?.image}
                           alt="Current User Image"
                           className="rounded-full h-40 w-40 object-cover mb-2"
                         />

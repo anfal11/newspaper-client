@@ -13,6 +13,7 @@ import Register from "../Pages/Register";
 import SingleDetailsPage from "../Component/SingleDetailsPage/SingleDetailsPage";
 import UpdateProfile from "../Component/Update/UpdateProfile";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import PrivateRoute from "./PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -51,7 +52,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/userProfile",
-        element: <UserProfile />,
+        element: <PrivateRoute><UserProfile /></PrivateRoute>,
       },
       {
         path: "/login",
@@ -67,7 +68,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/update-profile/:id",
-        element: <UpdateProfile />,
+        element: <PrivateRoute><UpdateProfile /></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/users/${params.id}`)
       }      
     ],

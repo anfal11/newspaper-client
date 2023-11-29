@@ -5,12 +5,35 @@ import useAuth from "../../Hooks/useAuth";
 import { Puff } from "react-loader-spinner";
 import {
   FormControl,
-  InputLabel,
-  NativeSelect,
+  IconButton,
   TextField,
 } from "@mui/material";
+import { useEffect, useState } from "react";
+import SearchIcon from '@mui/icons-material/Search';
 
 const AllArticles = () => {
+  const [asc, setAsc] = useState(true)
+  const [filter, setFilter] = useState([]);
+  const [search, setSearch] = useState('');
+
+
+  // const { data: searchedArticles,} = useQuery({
+  //   queryKey: ["searchedArticles", searchQuery],
+  //   queryFn: async () => {
+  //     const res = await axios.get(`http://localhost:5000/articles/search/${searchQuery}`);
+  //     return res.data;
+  //   },
+  //   enabled: !!searchQuery,
+  // });
+
+  // useEffect(()=> {
+  //   fetch(`http://localhost:5000/articles?sort=${asc ? 'asc' : 'desc'}`)
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     setFilter(data)
+  //   })
+  // },[asc])
+
   const { loading: authLoading } = useAuth();
   const {
     refetch,
@@ -19,13 +42,28 @@ const AllArticles = () => {
   } = useQuery({
     queryKey: ["articles"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/articles");
+      const res = await axios.get(`http://localhost:5000/articles`);
       return res.data;
     },
   });
-  refetch();
+  // refetch();
+
+  useEffect(() => {
+    axios.get(`http://localhost:5000/articles?sort=${asc ? 'asc' : 'desc'}&search=${search}`)
+      .then((res) => {
+        setFilter(res.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching articles:', error);
+      });
+  }, [asc, search]);
 
   const loading = authLoading || usersLoading;
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearch(e.target.elements.search.value);
+  }
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -51,34 +89,56 @@ const AllArticles = () => {
         <>
           {/* todo: add search and filter field */}
           <h1 className="my-10"> </h1>
-          <TextField
-            id="outlined-basic"
-            label="Search here"
-            variant="outlined"
-            style={{ width: "100%" }}
-          />
+          <div className="flex items-center gap-2">
+        <form onSubmit={handleSearch} className="w-full flex items-center gap-2">
+  <TextField
+    id="outlined-basic"
+    label="Search here by title"
+    variant="outlined"
+    style={{ width: "100%" }}
+    name="search"
+  />
+  <IconButton size="large" type="submit" aria-label="search" color="inherit">
+    <SearchIcon />
+  </IconButton>
+</form>
+
+          {/* <button className="bg-blue-400 text-white p-3 rounded-lg" onClick={() => refetch()}>Search</button> */}
+          </div>
           <div className="my-20">
             <FormControl fullWidth>
-              <InputLabel variant="standard" htmlFor="uncontrolled-native">
-                Filter by
-              </InputLabel>
-              <NativeSelect
-                defaultValue={30}
-                inputProps={{
-                  name: "filter",
-                  id: "uncontrolled-native",
-                }}
-              >
-                <option value={10}>Views</option>
-                <option value={20}>Publisher Name</option>
-              </NativeSelect>
+
+            <div className="flex flex-col gap-2 items-center justify-center">
+            <p className="font-bold text-xl">
+                Filtered by: 
+              </p>
+         
+                <div className="flex gap-3">
+                <button 
+                onClick={() => setAsc(!asc)}
+                className="btn bg-blue-500 text-white hover:bg-blue-700">
+                {asc ? 'Views by descending orders' : 'Views by ascending orders'}
+                </button>
+                </div>
+            </div>
+        
             </FormControl>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-10 lg:p-0 gap-4">
-            {articles.map((article) => (
-              <ArticleCard key={article._id} article={article} />
-            ))}
-          </div>
+  {search.length > 0 ? (
+    filter.map((article) => (
+      <ArticleCard key={article._id} article={article} />
+    ))
+  ) : (
+    articles.map((article) => (
+      <ArticleCard key={article._id} article={article} />
+    ))
+  )}
+</div>
+
+
+
+
         </>
       )}
     </div>
