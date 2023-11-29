@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import ArticleCard from "../../Component/ArticleCard/ArticleCard";
 import useAuth from "../../Hooks/useAuth";
@@ -11,6 +11,8 @@ const AllArticles = () => {
   const [asc, setAsc] = useState(true);
   const [filter, setFilter] = useState([]);
   const [search, setSearch] = useState("");
+  const [article, setArticle] = useState([]);
+  const {loading} = useAuth();
 
   // const { data: searchedArticles,} = useQuery({
   //   queryKey: ["searchedArticles", searchQuery],
@@ -29,14 +31,14 @@ const AllArticles = () => {
   //   })
   // },[asc])
 
-  const { loading: authLoading } = useAuth();
-  const { data: articles = [], isLoading: usersLoading } = useQuery({
-    queryKey: ["articles"],
-    queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/articles`);
-      return res.data;
-    },
-  });
+  // const { loading: authLoading } = useAuth();
+  // const { data: articles = [], isLoading: usersLoading } = useQuery({
+  //   queryKey: ["articles"],
+  //   queryFn: async () => {
+  //     const res = await axios.get(`http://localhost:5000/articles`);
+  //     return res.data;
+  //   },
+  // });
 
   useEffect(() => {
     axios
@@ -47,13 +49,14 @@ const AllArticles = () => {
       )
       .then((res) => {
         setFilter(res.data);
+        setArticle(res.data);
       })
       .catch((error) => {
         console.error("Error fetching articles:", error);
       });
   }, [asc, search]);
 
-  const loading = authLoading || usersLoading;
+  // const loading = authLoading || usersLoading;
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -128,12 +131,13 @@ const AllArticles = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-10 lg:p-0 gap-4">
             {search.length > 0
-              ? filter.map((article) => (
+              ? filter?.map((article) => (
                   <ArticleCard key={article._id} article={article} />
                 ))
-              : articles.map((article) => (
+              : article?.map((article) => (
                   <ArticleCard key={article._id} article={article} />
-                ))}
+                ))
+              }
           </div>
         </>
       )}
