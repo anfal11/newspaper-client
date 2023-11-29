@@ -10,6 +10,8 @@ const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const AddArticlePage = () => {
   const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedTags, setSelectedTags] = useState([]);
+
   const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxios();
@@ -27,11 +29,12 @@ const AddArticlePage = () => {
     if (res.data.success) {
       const articleData = {
         title: data.name,
-        publisher: selectedOption?.value, 
-        tags: [data.tags],
+        publisher: selectedOption?.value,
+        tags: selectedTags.map((tag) => tag.value),
         description: data.description,
         imageUrl: res.data.data.display_url,
       };
+      
 
       const articleRes = await axiosSecure.post("", articleData);
       console.log(articleRes.data);
@@ -44,10 +47,18 @@ const AddArticlePage = () => {
     console.log(res.data);
   };
 
-  const options = [
-    { value: 'publisher1', label: 'Publisher 1' },
-    { value: 'publisher2', label: 'Publisher 2' },
-    { value: 'publisher3', label: 'Publisher 3' },
+  const tags = [
+    { value: 'world', label: 'World' },
+    { value: 'sport', label: 'Sport' },
+    { value: 'national', label: 'National' },
+    { value: 'local', label: 'Local News' },
+    { value: 'commmunity', label: 'Community' },
+    { value: 'business', label: 'Business' },
+    { value: 'environment', label: 'Environment' },
+    { value: 'urban', label: 'Urban' },
+    { value: 'technlogy', label: 'Technology' },
+    { value: 'research', label: 'Research' },
+    { value: 'science', label: 'Science' },
   ];
 
   return (
@@ -76,42 +87,34 @@ const AddArticlePage = () => {
             {/* category */}
             <div className="form-control w-full my-6">
               <label className="label">
+                <span className="label-text">Tags*</span>
+              </label>
+
+              <Select
+                options={tags}
+                defaultValue={selectedOption}
+                onChange={setSelectedOption}
+                name="tags"
+                className="text-black"
+                placeholder="Select Tags..."
+                isMulti
+              />
+            </div>
+            <div className="form-control w-full my-6">
+            <label className="label">
                 <span className="label-text">Publisher*</span>
               </label>
-              {/* <select
+              <select
                 {...register("category", { required: true })}
                 className="select select-bordered w-full"
                 defaultValue={"default"}
               >
                 <option disabled value="default">
-                  Select a category
+                  Select publisher
                 </option>
-                <option value="salad">Salad</option>
-                <option value="pizza">Pizza</option>
-                <option value="soups">Soups</option>
-                <option value="desserts">Desserts</option>
-                <option value="drinks">Drinks</option>
-              </select> */}
-              <Select
-                options={options}
-                defaultValue={selectedOption}
-                onChange={setSelectedOption}
-                name="publisher"
-                className="text-black"
-              />
-            </div>
-            {/* price  */}
-
-            <div className="form-control w-full my-6">
-              <label className="label">
-                <span className="label-text">Tags*</span>
-              </label>
-              <input
-                type="number"
-                placeholder="Tags"
-                {...register("tags", { required: true })}
-                className="input input-bordered w-full"
-              />
+                <option value="a">a</option>
+                <option value="b">b</option>
+              </select>
             </div>
           </div>
           <div className="form-control">
