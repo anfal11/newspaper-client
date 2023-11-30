@@ -13,6 +13,10 @@ const Home = () => {
     navigate("/subscription");
   };
 
+  const closeBanner = () => {
+    setShowModal(false);
+  };
+
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setShowModal(true);
@@ -34,20 +38,31 @@ const Home = () => {
               width: "400px",
               height: "200px",
               textAlign: "center",
+              backgroundColor: "#3498db",
             }}
             className="left-1/2 bg-blue-500 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
           >
             <p className="text-white mb-4 font-semibold text-xl">
               Subscribe now for premium content!
             </p>
-            <button
-              className="btn"
-              onClick={() => navigateToSubscriptionPage()}
-            >
+            <button className="btn" onClick={() => navigateToSubscriptionPage()}>
               Subscribe
             </button>
+            <span
+              onClick={closeBanner}
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                cursor: "pointer",
+                fontSize: "20px",
+                color: "white",
+              }}
+            >
+              &#10006;
+            </span>
           </div>
-          )}
+        )}
       </div>
       <Banner></Banner>
       <TrendingCards></TrendingCards>
