@@ -1,49 +1,46 @@
 import { MdDelete, MdEdit } from "react-icons/md";
-import SectionTitle from "./SectionTitle";
-import useMenu from "../Hooks/useMenu";
+
+// import useMenu from "../Hooks/useMenu";
 import Swal from "sweetalert2";
-import useAxios from "../Hooks/useAxios";
 import { Link } from "react-router-dom";
+import useAxios from "../../Hooks/useAxios";
 
 const ManageItems = () => {
-  const [menu, , refetch] = useMenu();
+//   const [menu, , refetch] = useMenu();
   const axiosSecure = useAxios();
 
-  const handleDelete = (item) => {
-    console.log(item);
-    Swal.fire({
-      title: "Are you sure you want to remove the item?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, remove it!",
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        const res = await axiosSecure.delete(`/articles/${item._id}`);
+//   const handleDelete = (item) => {
+//     console.log(item);
+//     Swal.fire({
+//       title: "Are you sure you want to remove the item?",
+//       text: "You won't be able to revert this!",
+//       icon: "warning",
+//       showCancelButton: true,
+//       confirmButtonColor: "#3085d6",
+//       cancelButtonColor: "#d33",
+//       confirmButtonText: "Yes, remove it!",
+//     }).then(async (result) => {
+//       if (result.isConfirmed) {
+//         const res = await axiosSecure.delete(`/articles/${item._id}`);
 
-        if (res.data.modifiedCount > 0) {
-          // refetch to update the ui
-          refetch();
-          Swal.fire({
-            showConfirmButton: false,
-            title: `${item.name} has been deleted`,
-            position: "top-end",
-            icon: "success",
-            timer: 1500,
-          });
-        }
-      }
-    });
-  };
+//         if (res.data.modifiedCount > 0) {
+//           // refetch to update the ui
+//           refetch();
+//           Swal.fire({
+//             showConfirmButton: false,
+//             title: `${item.name} has been deleted`,
+//             position: "top-end",
+//             icon: "success",
+//             timer: 1500,
+//           });
+//         }
+//       }
+//     });
+//   };
 
   return (
     <div>
-      <SectionTitle
-        heading="Hurry Up!!!"
-        subHeading="Manage All Items"
-      ></SectionTitle>
+
 
       <div className="my-20">
         <div className="overflow-x-auto">

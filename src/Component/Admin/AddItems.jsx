@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
-import SectionTitle from "./SectionTitle";
+
 import { FaUtensils } from "react-icons/fa";
-import useAxiosPublic from "../Hooks/useAxiosPublic";
-import useAxios from "../Hooks/useAxios";
 import toast from "react-hot-toast";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import useAxios from "../../Hooks/useAxios";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -45,10 +45,7 @@ const AddItems = () => {
 
   return (
     <div>
-      <SectionTitle
-        heading="What's new"
-        subHeading="Add an Item"
-      ></SectionTitle>
+
 
       <div className="p-10 bg-[#E8E8E8] m-10 rounded-lg">
         <form onSubmit={handleSubmit(onSubmit)}>

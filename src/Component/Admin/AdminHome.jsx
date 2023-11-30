@@ -1,9 +1,10 @@
-import { useQuery } from "@tanstack/react-query";
+
 import { FiDollarSign } from "react-icons/fi";
 import { FaUser } from "react-icons/fa";
-import { BiSolidFoodMenu } from "react-icons/bi";
 import useAuth from "../../Hooks/useAuth";
 import useAxios from "../../Hooks/useAxios";
+import { useQuery } from "@tanstack/react-query";
+
 
 const adminHome = () => {
   const { user } = useAuth();
@@ -66,7 +67,7 @@ const adminHome = () => {
 
         <div className="stat">
           <div className="stat-figure text-secondary">
-          <BiSolidFoodMenu className="text-4xl" />
+          {/* <BiSolidFoodMenu className="text-4xl" /> */}
           </div>
           <div className="stat-title">Total Menu:</div>
           <div className="stat-value">{stats?.menu}</div>
