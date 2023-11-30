@@ -41,17 +41,47 @@ const TrendingCards = () => {
   // Selecting the top 6 trending articles
   const trendingArticles = sortedArticles.slice(0, 6);
 
+  const getSlidesPerView = () => {
+    const windowWidth = window.innerWidth;
+
+    if (windowWidth < 640) {
+      return 1; // Small screens, show 1 slide
+    } else if (windowWidth < 1024) {
+      return 2; // Medium screens, show 1 slide
+    } else {
+      return 3; // Large screens, show 3 slides
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto">
       <h2 className="text-4xl font-bold mb-28 text-gray-500 underline text-center">Trending Articles</h2>
       <Swiper
-        slidesPerView={3}
+            // slidesPerView={3}
         spaceBetween={30}
-        pagination={{
-          clickable: true,
+        effect={'coverflow'}
+        grabCursor={true}
+        centeredSlides={true}
+        coverflowEffect={{
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
         }}
+        pagination={true}
         modules={[Pagination]}
         className="mySwiper"
+        breakpoints={{
+          // when window width is >= 768px
+          768: {
+            slidesPerView: 2,
+          },
+          // when window width is >= 1024px
+          1024: {
+            slidesPerView: 3,
+          },
+        }}
       >
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
       {trendingArticles.map((article) => {
