@@ -2,7 +2,7 @@
 
 const CallUs = () => {
   return (
-    <div className="bg-blue-500 mt-10 mb-32 p-16 text-white text-center">
+    <div className="max-w-7xl mx-auto bg-blue-500 mt-10 mb-32 p-16 text-white text-center">
       <h1 className="text-3xl font-bold mb-4">Need Assistance or Have Extra News to Share?</h1>
       <p className="text-lg mb-6">Our support team is here to help you. Feel free to reach out:</p>
       <div className="text-2xl font-semibold mb-8">
