@@ -28,7 +28,7 @@ const Banner = () => {
          
           </h1>
           <p className="mt-3 text-lg text-gray-800 dark:text-gray-400">
-          &quot;Your adventure begins here. Let&apos;s explore the world together.&quot;
+          Stay informed, stay inspired. Dive into a world of stories with <span className="font-bold">The Daily Nexux</span>. Your daily guide to news, culture, and exploration.
           </p>
 
           <div className="mt-7 grid gap-3 w-full sm:inline-flex">
@@ -56,7 +56,7 @@ const Banner = () => {
               className="inline-flex justify-center items-center gap-x-3.5 text-sm lg:text-base text-center border hover:border-gray-300 shadow-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-white transition py-3 px-4 dark:border-gray-800 dark:hover:border-gray-600 dark:shadow-slate-700/[.7] dark:focus:ring-gray-700 dark:focus:ring-offset-gray-800"
               href="#"
             >
-              Contact sales team
+              Contact with us
             </a>
           </div>
 
@@ -77,11 +77,11 @@ const Banner = () => {
                   />
                 </svg>
                 <span className="text-gray-800">
-                  Premium Support
+                  Trusted News Source
                 </span>
               </div>
               <p className="mt-2 text-gray-800 dark:text-gray-400">
-                Crafted with the best supports and top-notch quality assurance.
+              Your go-to destination for reliable, timely, and comprehensive news coverage. We&apos;re dedicated to delivering accurate information to keep you informed.
               </p>
             </div>
             <div className="py-5">
@@ -108,11 +108,11 @@ const Banner = () => {
                   />
                 </svg>
                 <span className="text-gray-800">
-                  Advanced technology
+                Innovative Technology
                 </span>
               </div>
               <p className="mt-2 text-gray-800 dark:text-gray-400">
-                Powered by the latest technologies to ensure high performance user experience.
+              Experience news like never before with our state-of-the-art technology. We leverage the latest advancements to provide you with a seamless and high-performance user experience.
               </p>
             </div>
           </div>

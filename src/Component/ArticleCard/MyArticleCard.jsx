@@ -43,7 +43,7 @@ const MyArticleCard = ({ article }) => {
               </Typography>
             </CardContent>
             <CardActions className="flex items-center gap-2">
-              <img className="rounded-full h-8 w-8" src={image} alt="" />
+              {/* <img className="rounded-full h-8 w-8" src={image} alt="" /> */}
               <Button size="small">{publisher}</Button>
             </CardActions>
             <CardActions>

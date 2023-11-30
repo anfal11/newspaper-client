@@ -212,12 +212,6 @@ const NavBar = () => {
                 }
                 alt=""
               />
-              <div>
-                <p className="text-white font-bold">
-                  {users?.find((u) => u.email === user.email)?.name ||
-                    user.displayName}
-                </p>
-              </div>
             </div>
           ) : (
             <></>

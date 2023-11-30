@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import Banner from "../../Component/Home/Banner";
 import { useNavigate } from "react-router-dom";
+import Subscription from "../Subscription/Subscription";
+import Count from "../../Component/Home/Count";
+import TrendingCards from "../Articles/TrendingCards";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
@@ -47,6 +50,9 @@ const Home = () => {
           )}
       </div>
       <Banner></Banner>
+      <TrendingCards></TrendingCards>
+      <Count></Count>
+      <Subscription></Subscription>
     </div>
   );
 };
