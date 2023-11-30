@@ -14,6 +14,13 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import AddArticlePage from "../Pages/Articles/AddArticlePage";
 import UpdateArticle from "../Component/Update/UpdateArticle";
+import Dashboard from "../Pages/Dashboard/Dashboard"
+import Payment from "../Component/Payment/Payment";
+import PaymentHistory from "../Component/Payment/PaymentHistory";
+import AdminRoute from "./AdminRoute";
+import adminHome from "../Component/Admin/AdminHome";
+import AllUsers from "../Component/Admin/AllUsers";
+import UpdateItem from "../Component/Admin/UpdateItem";
 
 
 export const router = createBrowserRouter([
@@ -74,4 +81,42 @@ export const router = createBrowserRouter([
       }      
     ],
   },
+  {
+    path: 'dashboard',
+    element: <Dashboard />,
+    children: [
+      //normal user routes
+        {
+        path: 'payment',
+        element: <Payment></Payment>
+      },
+      {
+        path: 'paymentHistory',
+        element: <PaymentHistory></PaymentHistory>
+      },
+
+      //admin routes
+      {
+        path: 'adminHome',
+        element: <AdminRoute><adminHome/></AdminRoute>,
+      },
+      // {
+      //   path: 'addItems',
+      //   element: <AdminRoute><AddItems /></AdminRoute>,
+      // },
+      // {
+      //   path: 'manageItems',
+      //   element: <AdminRoute><ManageItems /></AdminRoute>,
+      // },
+      {
+        path: 'updateItem/:id',
+        element: <AdminRoute><UpdateItem /></AdminRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/users/${params.id}`)
+      },
+      {
+        path: 'users',
+        element:<AdminRoute><AllUsers /></AdminRoute>,
+      }
+    ]
+  }
 ]);
