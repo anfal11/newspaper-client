@@ -41,6 +41,8 @@ const Home = () => {
               height: "200px",
               textAlign: "center",
               backgroundColor: "#3498db",
+              top: "80%",
+              left: "220px",
             }}
             className="left-1/2 bg-blue-500 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
           >

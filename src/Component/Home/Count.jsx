@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";

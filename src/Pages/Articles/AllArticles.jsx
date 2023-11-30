@@ -12,7 +12,9 @@ const AllArticles = () => {
   const [filter, setFilter] = useState([]);
   const [search, setSearch] = useState("");
   const [article, setArticle] = useState([]);
+  const [isPremium, setIsPremium] = useState(false);
   const {loading} = useAuth();
+
 
   useEffect(() => {
     axios

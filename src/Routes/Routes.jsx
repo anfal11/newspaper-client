@@ -1,10 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "./Root";
 import Home from "../Pages/Home/Home";
-
 import AllArticles from "../Pages/Articles/AllArticles";
 import Subscription from "../Pages/Subscription/Subscription";
-import Dashboard from "../Pages/Dashboard/Dashboard";
 import MyArticles from "../Pages/MyArticles/MyArticles";
 import PremiumArticles from "../Pages/PremiumArticles/PremiumArticles";
 import UserProfile from "../Pages/UserProfile/UserProfile";
@@ -30,7 +28,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/addArticle",
-        element: <AddArticlePage />,
+        element: <PrivateRoute><AddArticlePage /></PrivateRoute>,
       },
       {
         path: "/all-articles",
@@ -39,10 +37,6 @@ export const router = createBrowserRouter([
       {
         path: "/subscription",
         element: <Subscription />,
-      },
-      {
-        path: "/dashboard",
-        element: <Dashboard />,
       },
       {
         path: "/my-article",

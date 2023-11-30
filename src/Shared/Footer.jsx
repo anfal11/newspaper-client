@@ -26,16 +26,16 @@ const Footer = () => {
       </nav>
       <nav>
         <div className="grid grid-flow-col gap-4">
-        <FaFacebook className="text-2xl" />
-        <FaGoogle className="text-2xl" />
-        <FaTwitter className="text-2xl" />
-        <FaInstagram className="text-2xl" />
+        <FaFacebook className="text-2xl text-blue-500" />
+        <FaGoogle className="text-2xl text-green-500" />
+        <FaTwitter className="text-2xl text-blue-700" />
+        <FaInstagram className="text-2xl text-red-500" />
         </div>
       </nav>
       <aside>
         {/* Updated copyright notice */}
         <p>© {currentYear} The Daily Nexus. All rights reserved.</p>
-        <p>Providing Quality News Since 1950.</p>
+        <p>Providing Quality News Since 1992.</p>
       </aside>
     </footer>
   );
