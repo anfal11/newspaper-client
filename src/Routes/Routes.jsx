@@ -20,9 +20,7 @@ import PaymentHistory from "../Component/Payment/PaymentHistory";
 import AdminRoute from "./AdminRoute";
 import AdminHome from "../Component/Admin/AdminHome";
 import AllUsers from "../Component/Admin/AllUsers";
-import UpdateItem from "../Component/Admin/UpdateItem";
-import AddItems from "../Component/Admin/AddItems";
-import ManageItems from "../Component/Admin/ManageItems";
+import AddPublisher from "../Component/Admin/AddPublisher";
 
 
 export const router = createBrowserRouter([
@@ -103,18 +101,18 @@ export const router = createBrowserRouter([
         element: <AdminRoute><AdminHome/> </AdminRoute>,
       },
       {
-        path: 'addItems',
-        element: <AdminRoute><AddItems /></AdminRoute>,
+        path: 'allArticles',
+        element: <AdminRoute><AllArticles /></AdminRoute>,
       },
       {
-        path: 'manageItems',
-        element: <AdminRoute><ManageItems /></AdminRoute>,
+        path: 'addPublisher',
+        element: <AdminRoute><AddPublisher/></AdminRoute>,
       },
-      {
-        path: 'updateItem/:id',
-        element: <AdminRoute><UpdateItem /></AdminRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/users/${params.id}`)
-      },
+      // {
+      //   path: 'updateItem/:id',
+      //   element: <AdminRoute><UpdateItem /></AdminRoute>,
+      //   loader: ({params}) => fetch(`http://localhost:5000/users/${params.id}`)
+      // },
       {
         path: 'users',
         element:<AdminRoute><AllUsers /></AdminRoute>,

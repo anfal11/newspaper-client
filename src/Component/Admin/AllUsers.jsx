@@ -2,7 +2,8 @@ import { useQuery } from "@tanstack/react-query";
 import {MdDelete} from 'react-icons/md'
 import {FaUsers} from 'react-icons/fa'
 import Swal from "sweetalert2";
-import useAxios from "../../Hooks/useAxios"
+import useAxios from "../../Hooks/useAxios";
+
 
 const AllUsers = () => {
   const axiosSecure = useAxios();
@@ -10,17 +11,16 @@ const AllUsers = () => {
   const { refetch, data: users = [] } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/api/v1/users`
-      // ,{
-      //   headers: {
-      //     authorization: `Bearer ${localStorage.getItem("access token")}`,
-      //   },
-      // }
+      const res = await axiosSecure.get('/users'
+
       );
       return res.data;
     },
   });
 
+  
+
+  console.log(users);
   const handleDeleteUser = (user) => {
     Swal.fire({
       title: "Are you sure you want to remove this user?",
@@ -51,7 +51,7 @@ const AllUsers = () => {
   }
 
   const handleMakeAdmin = (user) => {
-    axiosSecure.patch(`/api/v1/users/admin/${user._id}`)
+    axiosSecure.patch(`/users/admin/${user._id}`)
     .then((result) => {
       if (result.data.modifiedCount > 0) {
         Swal.fire({
@@ -72,7 +72,7 @@ const AllUsers = () => {
       <div className="mt-20">
         <div className="flex justify-evenly">
           <h1 className="text-xl lg:text-4xl">All Users</h1>
-          <h1 className="text-xl lg:text-4xl">Total Users: {users.length}</h1>
+          <h1 className="text-xl lg:text-4xl">Total Users: {users?.length}</h1>
           {/* <h1 className="text-xl lg:text-4xl">Total Price: ${totalPrice}</h1> */}
           <button className="btn text-base lg:text-3xl bg-[#D1A054]">
             Pay
@@ -94,7 +94,7 @@ const AllUsers = () => {
               </thead>
               <tbody>
                 {/* row 1 */}
-                {users.map((user, index) => (
+                {users?.map((user, index) => (
                   <tr key={user._id}>
                     <td>{index + 1}</td>
                     <td className="lg:text-xl">{user?.name}</td>

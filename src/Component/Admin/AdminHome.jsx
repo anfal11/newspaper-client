@@ -1,80 +1,73 @@
+import useAuth from '../../Hooks/useAuth';
+import { Puff } from 'react-loader-spinner';
+import DynamicPieChartComponent from './DynamicPieChartComponent';
+import { Chart } from 'react-google-charts';
 
-import { FiDollarSign } from "react-icons/fi";
-import { FaUser } from "react-icons/fa";
-import useAuth from "../../Hooks/useAuth";
-import useAxios from "../../Hooks/useAxios";
-import { useQuery } from "@tanstack/react-query";
-
-
-const adminHome = () => {
+const AdminHome = () => {
   const { user } = useAuth();
-  const axiosSecure = useAxios();
-
-  const { data: stats = [] } = useQuery({
-    queryKey: ["admin-stats"],
-    queryFn: async () => {
-      const res = await axiosSecure.get("/api/v1/admin-stats");
-      return res.data;
-    },
-  });
 
   return (
     <div className="px-36 mt-20">
-      <h1 className="text-3xl font-bold">Hi, Welcome </h1>
+      <h1 className="text-3xl font-bold">Hi, Welcome</h1>
 
       {user?.displayName ? (
-        <p className="text-xl font-semibold">{user?.displayName}</p>
+        <p className="text-xl font-semibold">{user?.displayName} Back!</p>
       ) : (
-        "Back!"
+        <Puff color="#00BFFF" height={100} width={100} />
       )}
 
-      <div className="stats shadow mt-20">
-        <div className="stat p-10">
-          <div className="stat-figure text-secondary">
-            <FiDollarSign className="text-4xl" />
-          </div>
-          <div className="stat-title">Revenue</div>
-          <div className="stat-value">${stats?.revenue}</div>
-        </div>
+      {/* Dynamic Pie Chart */}
+      <DynamicPieChartComponent />
 
-        <div className="stat">
-          <div className="stat-figure text-secondary">
-            <FaUser className="text-4xl" />
-          </div>
-          <div className="stat-title">Customers:</div>
-          <div className="stat-value">{stats?.users}</div>
-        </div>
+      {/* Static Bar Chart */}
+      <div className="mt-8">
+        <h2 className="text-2xl font-semibold">Static Bar Chart</h2>
+        <Chart
+          width={'500px'}
+          height={'300px'}
+          chartType="BarChart"
+          loader={<div>Loading Chart</div>}
+          data={[
+            ['Category', 'Value'],
+            ['Category A', 50],
+            ['Category B', 30],
+            ['Category C', 20],
+          ]}
+          options={{
+            title: 'Bar Chart Example',
+          }}
+        />
+      </div>
 
-        <div className="stat">
-          <div className="stat-figure text-secondary">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              className="inline-block w-8 h-8 stroke-current"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"
-              ></path>
-            </svg>
-          </div>
-          <div className="stat-title">Total Orders:</div>
-          <div className="stat-value">{stats?.orders}</div>
-        </div>
-
-        <div className="stat">
-          <div className="stat-figure text-secondary">
-          {/* <BiSolidFoodMenu className="text-4xl" /> */}
-          </div>
-          <div className="stat-title">Total Menu:</div>
-          <div className="stat-value">{stats?.menu}</div>
-        </div>
+      {/* Static Line Chart */}
+      <div className="mt-8">
+        <h2 className="text-2xl font-semibold">Static Line Chart</h2>
+        <Chart
+          width={'500px'}
+          height={'300px'}
+          chartType="LineChart"
+          loader={<div>Loading Chart</div>}
+          data={[
+            ['X', 'Y'],
+            [0, 0],
+            [1, 10],
+            [2, 23],
+            [3, 17],
+            [4, 18],
+            [5, 9],
+            [6, 11],
+            [7, 27],
+            [8, 33],
+            [9, 40],
+            [10, 32],
+          ]}
+          options={{
+            title: 'Line Chart Example',
+          }}
+        />
       </div>
     </div>
   );
 };
 
-export default adminHome;
+export default AdminHome;
