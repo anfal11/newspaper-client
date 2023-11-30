@@ -5,6 +5,7 @@ import Subscription from "../Subscription/Subscription";
 import Count from "../../Component/Home/Count";
 import TrendingCards from "../Articles/TrendingCards";
 import AllPublisher from "../../Component/Home/AllPublisher";
+import CallUs from "../../Component/Home/CallUs";
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
@@ -70,6 +71,7 @@ const Home = () => {
       <AllPublisher></AllPublisher>
       <Count></Count>
       <Subscription></Subscription>
+      <CallUs></CallUs>
     </div>
   );
 };
