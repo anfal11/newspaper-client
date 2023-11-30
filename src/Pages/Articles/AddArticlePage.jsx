@@ -31,7 +31,8 @@ const AddArticlePage = () => {
         title: data.name,
         publisher: selectedOption?.value,
         tags: selectedTags.map((tag) => tag.value),
-        description: data.description,
+        shortDescription: data.shortDescription,
+        longDescription: data.longDescription,
         imageUrl: res.data.data.display_url,
       };
       
@@ -119,12 +120,22 @@ const AddArticlePage = () => {
           </div>
           <div className="form-control">
             <label className="label">
-              <span className="label-text">Description*</span>
+              <span className="label-text">Short Description*</span>
             </label>
             <textarea
-              {...register("description", { required: true })}
+              {...register("shortDescription", { required: true })}
               className="textarea textarea-bordered h-24"
-              placeholder="Article description"
+              placeholder="Article short description"
+            ></textarea>
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Long Description*</span>
+            </label>
+            <textarea
+              {...register("longDescription", { required: true })}
+              className="textarea textarea-bordered h-24"
+              placeholder="Article long description"
             ></textarea>
           </div>
 

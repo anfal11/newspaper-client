@@ -15,6 +15,7 @@ import UpdateProfile from "../Component/Update/UpdateProfile";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import PrivateRoute from "./PrivateRoute";
 import AddArticlePage from "../Pages/Articles/AddArticlePage";
+import UpdateArticle from "../Component/Update/UpdateArticle";
 
 
 export const router = createBrowserRouter([
@@ -45,7 +46,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/my-article",
-        element: <MyArticles />,
+        element: <PrivateRoute><MyArticles /></PrivateRoute>,
       },
       {
         path: "/premium-article",
@@ -71,6 +72,11 @@ export const router = createBrowserRouter([
         path: "/update-profile/:id",
         element: <PrivateRoute><UpdateProfile /></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/users/${params.id}`)
+      },   
+      {
+        path: "/update-article/:id",
+        element: <PrivateRoute><UpdateArticle /></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/articles/${params.id}`)
       }      
     ],
   },

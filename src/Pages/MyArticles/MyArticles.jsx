@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import useAxios from "../../Hooks/useAxios";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 
 const MyArticles = () => {
   const [userData, setUserData] = useState([]);
@@ -38,7 +39,6 @@ const MyArticles = () => {
     return null;
   };
 
-  // Use the useQuery hook to fetch articles
   const { refetch, data: articles = [] } = useQuery({
     queryKey: ["articles"],
     queryFn: async () => {
@@ -56,19 +56,6 @@ const MyArticles = () => {
   // Filter articles based on the current user's email
   const filteredArticles = filterArticlesByUserEmail(user?.email, articles);
 
-  // Function to handle article update
-  const handleUpdate = async (articleId) => {
-    try {
-      // Make a request to the server to update the article based on the articleId
-      await axiosPublic.put(`/articles/${articleId}`, { /* Updated article data */ });
-
-      // Show a success toast using react-hot-toast
-      toast.success('Article updated successfully');
-    } catch (error) {
-      toast.error('Failed to update article');
-      console.error('Error updating article:', error);
-    }
-  };
 
   // handle article delete
   const handleDelete = (articleId) => {
@@ -108,10 +95,8 @@ const MyArticles = () => {
       const declineReason = response.data.declineReason;
 
       // Open a modal or use any other UI element to display the decline reason
-      // You can use a modal library or create a custom modal component
       console.log('Decline Reason:', declineReason);
     } catch (error) {
-      // Show an error toast using react-hot-toast
       toast.error('Failed to fetch decline reason');
       console.error('Error fetching decline reason:', error);
     }
@@ -162,8 +147,9 @@ const MyArticles = () => {
                     </td>
                     <td>{articleItem?.isPremium ? "Yes" : "No"}</td>
                     <td>
-                      {/* Update button */}
-                      <button onClick={() => handleUpdate(articleItem?._id)}>Update</button>
+                    <Link to={`/update-article/${articleItem._id}`}>
+                    <button>Update</button>
+                    </Link>
                     </td>
                     <td>
                       {/* Delete button */}
