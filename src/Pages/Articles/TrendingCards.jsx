@@ -4,6 +4,10 @@ import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@
 import { Link } from "react-router-dom";
 import { HiEye } from "react-icons/hi";
 import { useQuery } from "@tanstack/react-query";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
 
 const TrendingCards = () => {
   const [articles, setArticles] = useState([]);
@@ -40,7 +44,15 @@ const TrendingCards = () => {
   return (
     <div className="max-w-7xl mx-auto">
       <h2 className="text-4xl font-bold mb-28 text-gray-500 underline text-center">Trending Articles</h2>
-
+      <Swiper
+        slidesPerView={3}
+        spaceBetween={30}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Pagination]}
+        className="mySwiper"
+      >
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
       {trendingArticles.map((article) => {
         const matchedUser = users?.find((user) => user?.name === article?.publisher);
@@ -48,9 +60,10 @@ const TrendingCards = () => {
 
         return (
           <div key={article._id} className="trending-card">
+          <SwiperSlide >
             <div className="max-w-7xl mx-auto">
               <div>
-                <Card sx={{ maxWidth: 345, height: 570, boxShadow: 10 }}>
+                <Card sx={{ maxWidth: 345, height: 520, boxShadow: 10 }}>
                   <CardMedia
                     component="img"
                     alt="green iguana"
@@ -90,11 +103,12 @@ const TrendingCards = () => {
                 </Card>
               </div>
             </div>
+            </SwiperSlide>
           </div>
         );
       })}
       </div>
-
+      </Swiper>
       <div className="flex justify-center">
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-10">
         <Link to="/all-articles">View All Articles</Link>
