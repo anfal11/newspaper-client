@@ -14,7 +14,7 @@ const TrendingCards = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/articles")
+      .get("https://newspaper-server-side.vercel.app/articles")
       .then((res) => {
         setArticles(res.data);
       })
@@ -26,7 +26,7 @@ const TrendingCards = () => {
   const { refetch, data: users = [] } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/users");
+      const res = await axios.get("https://newspaper-server-side.vercel.app/users");
       return res.data;
     },
   });
@@ -41,17 +41,7 @@ const TrendingCards = () => {
   // Selecting the top 6 trending articles
   const trendingArticles = sortedArticles.slice(0, 6);
 
-  const getSlidesPerView = () => {
-    const windowWidth = window.innerWidth;
 
-    if (windowWidth < 640) {
-      return 1; // Small screens, show 1 slide
-    } else if (windowWidth < 1024) {
-      return 2; // Medium screens, show 1 slide
-    } else {
-      return 3; // Large screens, show 3 slides
-    }
-  };
 
   return (
     <div className="max-w-7xl mx-auto">

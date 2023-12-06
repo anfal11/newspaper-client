@@ -1,0 +1,17 @@
+[
+    {
+      "price": 700,
+      "validate": "1 month",
+      "quality": "free"
+    },
+    {
+      "price": 1400,
+      "validate": "3 month",
+      "quality": "premium duo"
+    },
+    {
+      "price": 1700,
+      "validate": "6 month",
+      "quality": "premium family"
+    }
+  ]

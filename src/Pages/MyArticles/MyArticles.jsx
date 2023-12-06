@@ -91,19 +91,38 @@ const MyArticles = () => {
   const handleDeclineReason = async (articleId) => {
     try {
       // Make a request to the server to get the decline reason based on the articleId
-      const response = await axiosPublic.get(`/articles/${articleId}/declineReason`);
+      const response = await axiosPublic.get(`/articles/decline/${articleId}`);
       const declineReason = response.data.declineReason;
-
+  
       // Open a modal or use any other UI element to display the decline reason
-      console.log('Decline Reason:', declineReason);
+      if (declineReason) {
+        Swal.fire({
+          title: 'Decline Reason',
+          text: declineReason,
+          icon: 'info',
+        });
+      } else {
+        Swal.fire({
+          title: 'No Decline Reason Available',
+          icon: 'info',
+        });
+      }
     } catch (error) {
       toast.error('Failed to fetch decline reason');
       console.error('Error fetching decline reason:', error);
     }
   };
+  
 
   return (
     <div>
+      {
+        filteredArticles.length === 0 ? 
+        <div className="flex flex-col gap-5 justify-center items-center pt-48 h-screen style={{ height: `calc(100vh - 300px)` }">
+        <img src="https://i.ibb.co/Wx7mQWh/image.png" className="w-48" alt="" />
+          <p className="text-3xl font-semibold">You have not added any articles yet.</p>
+        </div> :
+        <div>
       <p className="text-4xl py-32 text-center text-gray-500 font-bold underline">My articles</p>
       {loading ? (
         <div className="flex justify-center">
@@ -131,20 +150,26 @@ const MyArticles = () => {
                     <td>{index + 1}</td>
                     <td>{articleItem?.title}</td>
                     <td>
-                      {/* Details button */}
-                      <button onClick={() => handleDetails(articleItem?._id)}>{articleItem?.['short-description']}</button>
+
+                      <p>{articleItem?.shortDescription}</p>
                     </td>
                     <td>
-                      {/* Status */}
-                      {articleItem?.status === "approved" && "Approved"}
-                      {articleItem?.status === "declined" && (
-                        <>
-                          Declined
-                          <button onClick={() => handleDeclineReason(articleItem?.declineReason)}>View Reason</button>
-                        </>
-                      )}
-                      {articleItem?.status === "pending" && "Pending"}
-                    </td>
+  {/* Status */}
+  {articleItem?.status === "approved" && "Approved"}
+  {articleItem?.status === "declined" && (
+    <>
+      Declined
+      <button
+        className="btn mx-2"
+        onClick={() => handleDeclineReason(articleItem?._id)}
+      >
+        View Reason
+      </button>
+    </>
+  )}
+  {articleItem?.status === "pending" && "Pending"}
+</td>
+
                     <td>{articleItem?.isPremium ? "Yes" : "No"}</td>
                     <td>
                     <Link to={`/update-article/${articleItem._id}`}>
@@ -162,6 +187,8 @@ const MyArticles = () => {
           </div>
         </div>
       )}
+    </div>
+      }
     </div>
   );
 };

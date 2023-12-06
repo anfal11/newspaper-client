@@ -21,6 +21,10 @@ import AdminRoute from "./AdminRoute";
 import AdminHome from "../Component/Admin/AdminHome";
 import AllUsers from "../Component/Admin/AllUsers";
 import AddPublisher from "../Component/Admin/AddPublisher";
+import AllArticlesAdmin from "../Component/Admin/AllArticlesAdmin";
+import UserHome from "../Pages/Dashboard/UserHome";
+import Cart from "../Component/Payment/Cart";
+
 
 
 export const router = createBrowserRouter([
@@ -43,7 +47,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/subscription",
-        element: <Subscription />,
+        element: <PrivateRoute><Subscription /></PrivateRoute>,
       },
       {
         path: "/my-article",
@@ -72,12 +76,12 @@ export const router = createBrowserRouter([
       {
         path: "/update-profile/:id",
         element: <PrivateRoute><UpdateProfile /></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/users/${params.id}`)
+        loader: ({params}) => fetch(`https://newspaper-server-side.vercel.app/users/${params.id}`)
       },   
       {
         path: "/update-article/:id",
         element: <PrivateRoute><UpdateArticle /></PrivateRoute>,
-        loader: ({params}) => fetch(`http://localhost:5000/articles/${params.id}`)
+        loader: ({params}) => fetch(`https://newspaper-server-side.vercel.app/articles/${params.id}`)
       }      
     ],
   },
@@ -94,6 +98,14 @@ export const router = createBrowserRouter([
         path: 'paymentHistory',
         element: <PaymentHistory></PaymentHistory>
       },
+      {
+        path: 'userHome',
+        element: <PrivateRoute><UserHome></UserHome></PrivateRoute>
+      },
+      {
+        path: 'cart',
+        element: <PrivateRoute><Cart/> </PrivateRoute>,
+      },
 
       //admin routes
       {
@@ -102,7 +114,7 @@ export const router = createBrowserRouter([
       },
       {
         path: 'allArticles',
-        element: <AdminRoute><AllArticles /></AdminRoute>,
+        element: <AdminRoute> <AllArticlesAdmin /> </AdminRoute>,
       },
       {
         path: 'addPublisher',
@@ -111,7 +123,7 @@ export const router = createBrowserRouter([
       // {
       //   path: 'updateItem/:id',
       //   element: <AdminRoute><UpdateItem /></AdminRoute>,
-      //   loader: ({params}) => fetch(`http://localhost:5000/users/${params.id}`)
+      //   loader: ({params}) => fetch(`https://newspaper-server-side.vercel.app/users/${params.id}`)
       // },
       {
         path: 'users',

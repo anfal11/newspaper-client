@@ -31,7 +31,7 @@ const Register = () => {
     
     try {
       const res = await axios.post(
-        'http://localhost:5000/users',
+        'https://newspaper-server-side.vercel.app/users',
         {
           name,
           email,

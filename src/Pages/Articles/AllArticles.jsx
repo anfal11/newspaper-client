@@ -12,20 +12,20 @@ const AllArticles = () => {
   const [filter, setFilter] = useState([]);
   const [search, setSearch] = useState("");
   const [article, setArticle] = useState([]);
-  const [isPremium, setIsPremium] = useState(false);
   const {loading} = useAuth();
 
 
   useEffect(() => {
     axios
       .get(
-        `http://localhost:5000/articles?sort=${
+        `https://newspaper-server-side.vercel.app/articles?sort=${
           asc ? "asc" : "desc"
         }&search=${search}`
       )
       .then((res) => {
-        setFilter(res.data);
-        setArticle(res.data);
+        const approvedArticles = res.data.filter((article) => article.status === "approved");
+        setFilter(approvedArticles);
+        setArticle(approvedArticles);
       })
       .catch((error) => {
         console.error("Error fetching articles:", error);
@@ -61,7 +61,7 @@ const AllArticles = () => {
         </div>
       ) : (
         <>
-          {/* todo: add search and filter field */}
+         
           <h1 className="my-10"> </h1>
           <div className="flex items-center gap-2">
             <form

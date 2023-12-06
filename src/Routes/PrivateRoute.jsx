@@ -5,6 +5,7 @@ import { Puff } from "react-loader-spinner";
 
 const PrivateRoute = ({children}) => {
     const location = useLocation();
+    console.log(location);
     const {user, loading} = useAuth();
     if(loading){
         return (

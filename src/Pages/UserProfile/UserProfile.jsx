@@ -10,7 +10,7 @@ const UserProfile = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users`)
+    fetch(`https://newspaper-server-side.vercel.app/users`)
       .then((res) => res.json())
       .then((data) => {
         setU(data);

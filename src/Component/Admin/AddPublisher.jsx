@@ -14,7 +14,7 @@ const AddPublisher = () => {
 
         try {
             const res = await axios.post(
-              'http://localhost:5000/publisher',
+              'https://newspaper-server-side.vercel.app/publisher',
               {
                 publisher,
               }

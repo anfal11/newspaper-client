@@ -4,17 +4,32 @@ import useAxios from "../../Hooks/useAxios";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import { useForm } from "react-hook-form";
 import { GrArticle } from "react-icons/gr";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const AddArticlePage = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [selectedTags, setSelectedTags] = useState([]);
-
+  const [articles, setSelectedArticles] = useState([]);
   const { register, handleSubmit, reset } = useForm();
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxios();
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        const response = await axiosPublic.get("/users");
+        setSelectedArticles(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+      }
+    };
+
+    fetchArticles();
+  }, [axiosPublic]);
+
   const onSubmit = async (data) => {
     console.log(data);
     const imageFIle = { image: data.image[0] };
@@ -22,27 +37,36 @@ const AddArticlePage = () => {
     // formData.append('image', data.image[0]);
 
     // const res = await axiosPublic.post(image_hosting_api, formData);
-
+ // Get the current date and time
+ const currentDate = new Date();
+ const formattedDate = currentDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
     const res = await axiosPublic.post(image_hosting_api, imageFIle, {
       headers: { "content-type": "multipart/form-data" },
     });
     if (res.data.success) {
       const articleData = {
         title: data.name,
-        publisher: selectedOption?.value,
+        publisher: data.publisher,
         tags: selectedTags.map((tag) => tag.value),
         shortDescription: data.shortDescription,
         longDescription: data.longDescription,
-        imageUrl: res.data.data.display_url,
+        image: res.data.data.display_url,
+        postedDate: formattedDate,
+        status: "pending",
       };
+
       
 
-      const articleRes = await axiosSecure.post("", articleData);
+      const articleRes = await axiosSecure.post("/articles", articleData);
       console.log(articleRes.data);
       if (articleRes.data.insertedId) {
         //show success popup
         reset();
-        toast.success("Item Added Successfully");
+        toast.success("Article Added. Wait for Admin Approval.");
       }
     }
     console.log(res.data);
@@ -94,7 +118,9 @@ const AddArticlePage = () => {
               <Select
                 options={tags}
                 defaultValue={selectedOption}
-                onChange={setSelectedOption}
+                onChange={(selected) => {
+                  setSelectedTags(selected)
+                }}
                 name="tags"
                 className="text-black"
                 placeholder="Select Tags..."
@@ -102,21 +128,25 @@ const AddArticlePage = () => {
               />
             </div>
             <div className="form-control w-full my-6">
-            <label className="label">
-                <span className="label-text">Publisher*</span>
-              </label>
-              <select
-                {...register("category", { required: true })}
-                className="select select-bordered w-full"
-                defaultValue={"default"}
-              >
-                <option disabled value="default">
-                  Select publisher
-                </option>
-                <option value="a">a</option>
-                <option value="b">b</option>
-              </select>
-            </div>
+  <label className="label">
+    <span className="label-text">Publisher*</span>
+  </label>
+  <select
+    {...register("publisher", { required: true })}
+    className="select select-bordered w-full"
+    defaultValue={""}
+  >
+    <option disabled value="">
+      Select publisher
+    </option>
+    {articles.map((article) => (
+      <option key={article._id} value={article.name}>
+        {article.name}
+      </option>
+    ))}
+  </select>
+</div>
+
           </div>
           <div className="form-control">
             <label className="label">

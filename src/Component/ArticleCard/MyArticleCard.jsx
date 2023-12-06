@@ -13,12 +13,10 @@ const MyArticleCard = ({ article }) => {
   const {
     _id,
     title,
-    image,
     publisher,
     tags,
     viewCount,
-    "short-description": shortDescription,
-    "long-description": longDescription,
+    "shortDescription": shortDescription,
   } = article;
 
   console.log(article._id, title);

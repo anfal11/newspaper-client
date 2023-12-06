@@ -1,4 +1,68 @@
+import toast from "react-hot-toast";
+import useAxios from "../../Hooks/useAxios";
+import { useState } from "react";
+import useAuth from "../../Hooks/useAuth";
+
+
+
 const Subscription = () => {
+  const [selectedPeriod, setSelectedPeriod] = useState("");
+  const axiosSecure = useAxios();
+  const { user } = useAuth();
+
+  const handleSubscription = async () => {
+    if (!user) {
+      toast.error("Please login first.");
+      return;
+    }
+    if (!selectedPeriod) {
+      toast.error("Please select a subscription period.");
+      return;
+    }
+
+    let price = 0;
+    let isPremium = false;
+
+    switch (selectedPeriod) {
+      case "1-month":
+        price = 0;
+        break;
+      case "3-months":
+        price = 14.99;
+        isPremium = true;
+        break;
+      case "6-months":
+        price = 16.99;
+        isPremium = true;
+        break;
+      default:
+        break;
+    }
+
+    try {
+      const response = await axiosSecure.post("/cart", {
+        email: user?.email,
+        period: selectedPeriod,
+        price,
+        isPremium,
+      });
+
+      console.log(response.data);
+
+      if (response.data.insertedId) {
+        toast.success("Subscription initiated successfully.");
+      } else {
+        toast.error("Failed to initiate subscription. Please try again.");
+        console.log("Failed to initiate subscription. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error during subscription:", error);
+      toast.error(`An error occurred: ${error.message}`);
+    }
+  };
+
+
+
   return (
     
       <div className="min-h-screen pt-16 flex justify-center items-center">
@@ -12,6 +76,18 @@ const Subscription = () => {
               Choose a plan that works best for you and your team.
             </p>
           </div>
+
+          <select
+          value={selectedPeriod}
+          className="mt-5 border p-3"
+          onChange={(e) => setSelectedPeriod(e.target.value)}
+        >
+          <option>Select an option from here</option>
+          <option value="1-month">1 month</option>
+          <option value="3-months">3 months</option>
+          <option value="6-months">6 months</option>
+        </select>
+
           <div className="pt-24 flex flex-col lg:flex-row">
             {/* Basic Card */}
             <div className="w-96 p-8 bg-white text-center rounded-3xl pr-16 shadow-xl">
@@ -41,8 +117,10 @@ const Subscription = () => {
                 </p>
 
                 <p className="w-full py-4 mb-2 bg-blue-500 mt-8 rounded-xl text-white">
-                  <span className="font-medium">Try free for 1 month</span>
-                </p>
+          <button onClick={handleSubscription} className="font-medium">
+            Try free for one month
+          </button>
+        </p>
                 <small>
                   Free for 1 month, then $10.99 per month after. Offer only
                   available if you haven&apos;t tried permium before.{" "}
@@ -78,8 +156,10 @@ const Subscription = () => {
                   </span>
                 </p>
                 <p className="w-full py-4 mb-2 bg-blue-500 mt-8 rounded-xl text-white">
-                  <span className="font-medium">Get Premium Duo</span>
-                </p>
+          <button onClick={handleSubscription} className="font-medium">
+            Get Premium Duo
+          </button>
+        </p>
                 <small>
                   For couples who reside at the same address.{" "}
                   <a href="#" className="underline">
@@ -127,9 +207,11 @@ const Subscription = () => {
                     subscriber catalog(plan manager only)</span>
                 </p>
 
-                  <p className="w-full py-4 bg-blue-500 mt-8 rounded-xl text-white">
-                    <span className="font-medium">Get Premium Family</span>
-                  </p>
+                <p className="w-full py-4 mb-2 bg-blue-500 mt-8 rounded-xl text-white">
+          <button onClick={handleSubscription} className="font-medium">
+            Get Premium Family
+          </button>
+        </p>
                   <small>
                   For up yo 6 family members residing at the same address.{" "}
                   <a href="#" className="underline">

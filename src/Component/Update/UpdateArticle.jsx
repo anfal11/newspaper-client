@@ -47,8 +47,8 @@ const UpdateArticle = () => {
       .then((response) => {
         const articleData = response.data;
         setValue('name', articleData.title);
-        setValue('shortDescription', articleData['short-description']);
-        setValue('longDescription', articleData['long-description']);
+        setValue('shortDescription', articleData['shortDescription']);
+        setValue('longDescription', articleData['longDescription']);
         setSelectedOption({ value: articleData.publisher, label: articleData.publisher });
         setSelectedTags(articleData.tags.map((tag) => ({ value: tag, label: tag })));
       })
@@ -89,8 +89,8 @@ const UpdateArticle = () => {
         title: data.name,
         publisher: selectedOption?.value,
         tags: selectedTags.map((tag) => tag.value),
-        'short-description': data.shortDescription,
-        'long-description': data.longDescription,
+        'shortDescription': data.shortDescription,
+        'longDescription': data.longDescription,
         // Conditionally include the image property
         ...(imageURL && { image: imageURL }),
       };

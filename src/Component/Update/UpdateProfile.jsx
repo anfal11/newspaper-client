@@ -17,7 +17,7 @@ const UpdateProfile = () => {
   const { loading } = useAuth();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${id}`)
+    fetch(`https://newspaper-server-side.vercel.app/users/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProfile(data);
@@ -52,7 +52,7 @@ const UpdateProfile = () => {
         updateData.image = imageURL;
       }
   
-      const res = await axios.put('http://localhost:5000/users', updateData);
+      const res = await axios.put('https://newspaper-server-side.vercel.app/users', updateData);
   
       if (res.data.modifiedCount > 0) {
         toast.success('User successfully updated');

@@ -18,7 +18,7 @@ const SingleDetailsPage = () => {
         }
 
         isClickedRef.current = true;
-        const res = await axios.get(`http://localhost:5000/articles/${id}`);
+        const res = await axios.get(`https://newspaper-server-side.vercel.app/articles/${id}`);
         setArticle(res?.data);
       } finally {
         isClickedRef.current = false;
@@ -58,7 +58,7 @@ const SingleDetailsPage = () => {
             </p>
             <p className="text-xl">
               <span className="font-semibold">Description:</span>{" "}
-              {article?.["long-description"]}
+              {article?.longDescription}
             </p>
           </div>
         </div>

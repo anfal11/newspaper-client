@@ -10,6 +10,7 @@ const Login = () => {
   const { signInWIthMail, signInWithGoogle } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
+  console.log(location);
 
 
   const togglePasswordVisibility = () => {
@@ -40,7 +41,7 @@ const Login = () => {
       const email = user?.email;
       const image = user?.photoURL;
       const userInfo = {name, email, image};
-      axios.post('http://localhost:5000/users', userInfo)
+      axios.post('https://newspaper-server-side.vercel.app/users', userInfo)
       .then(() => {
         toast.success("User successfully logged in");
         navigate(location?.state ? location.state : "/");

@@ -2,10 +2,13 @@ import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../../Hooks/useAdmin";
 import { GrArticle } from "react-icons/gr";
 import { FaUserAlt } from "react-icons/fa";
-import { BsHouse, BsPaypal } from "react-icons/bs";
+import { BsCart4, BsHouse, BsPaypal } from "react-icons/bs";
 import { MdOutlineUpload } from "react-icons/md";
+import { CiMenuBurger } from "react-icons/ci";
+import useCart from "../../Hooks/useCart";
 
 const Dashboard = () => {
+  const [cart] = useCart();
   const [isAdmin] = useAdmin();
   console.log(isAdmin);
   return (
@@ -13,13 +16,13 @@ const Dashboard = () => {
       <div>
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
+        <div className="drawer-content flex flex-col items-start justify-center">
           {/* Page content here */}
           <label
             htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
+            className="btn m-4 bg-blue-500 drawer-button lg:hidden"
           >
-            Open Left Nav
+            <CiMenuBurger className="text-2xl text-white font-bold" />
           </label>
           <div>
               <Outlet />
@@ -95,6 +98,12 @@ const Dashboard = () => {
                     Payment History
                   </NavLink>
                 </li>
+                <li>
+                        <NavLink to="/dashboard/cart" className="menu text-base lg:text-2xl p-5 text-black text-center">
+                        <BsCart4></BsCart4>
+                            My Cart ({cart.length})
+                        </NavLink>
+                    </li>
               </>
             )}
             {/* Shared Nav Links  */}

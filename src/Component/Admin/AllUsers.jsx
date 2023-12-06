@@ -56,7 +56,7 @@ const AllUsers = () => {
       if (result.data.modifiedCount > 0) {
         Swal.fire({
           position: 'top-end',
-          title: `${user.name} is an Admin Now...`,
+          title: `${user?.name} is an Admin Now...`,
           showConfirmButton: false,
           icon: "success",
           timer: 1500,
@@ -68,15 +68,14 @@ const AllUsers = () => {
   }
 
   return (
-    <div>
-      <div className="mt-20">
+    <div className="">
+      <div className="mt-10">
+          <h1 className="text-xl text-center text-gray-500 font-bold my-16 underline lg:text-4xl">All Users</h1>
         <div className="flex justify-evenly">
-          <h1 className="text-xl lg:text-4xl">All Users</h1>
           <h1 className="text-xl lg:text-4xl">Total Users: {users?.length}</h1>
-          {/* <h1 className="text-xl lg:text-4xl">Total Price: ${totalPrice}</h1> */}
-          <button className="btn text-base lg:text-3xl bg-[#D1A054]">
+          {/* <button className="btn text-base lg:text-3xl bg-blue-500">
             Pay
-          </button>
+          </button> */}
         </div>
 
         <div className="my-20">
@@ -95,7 +94,7 @@ const AllUsers = () => {
               <tbody>
                 {/* row 1 */}
                 {users?.map((user, index) => (
-                  <tr key={user._id}>
+                  <tr key={user?._id}>
                     <td>{index + 1}</td>
                     <td className="lg:text-xl">{user?.name}</td>
                     <td>
@@ -105,15 +104,15 @@ const AllUsers = () => {
                     </td>
                     <td>
                     {
-                      user.role === 'admin' ? <p className="text-xl font-bold text-gray-500">Admin</p> :
+                      user?.role === 'admin' ? <p className="text-xl font-bold text-gray-500">Admin</p> :
                       <button onClick={()=> handleMakeAdmin(user)}>
-                <FaUsers className="text-2xl lg:text-4xl bg-[#D1A054] text-white p-1" />
+                <FaUsers className="text-2xl lg:text-4xl bg-blue-500 text-white p-1" />
                 </button>
                     }
                     </td>                   
                     <td>
                       <button onClick={()=> handleDeleteUser(user)}>
-                <MdDelete className="text-2xl lg:text-4xl text-[#B91C1C]" />
+                <MdDelete className="text-2xl lg:text-4xl text-red-500" />
                 </button>
                     </td>
                   </tr>
